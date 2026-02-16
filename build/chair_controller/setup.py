@@ -1,1 +1,0 @@
-/home/ayadiab/chair_ws/src/chair_controller/setup.py
