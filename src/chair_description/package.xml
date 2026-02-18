@@ -1,16 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>chair_controller</name>
+  <name>chair_description</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="ayadiab@todo.todo">ayadiab</maintainer>
+  <maintainer email="salwa@todo.todo">salwa</maintainer>
   <license>TODO: License declaration</license>
-
-  <depend>rclpy</depend>
-  <depend>geometry_msgs</depend>
-  <exec_depend>launch</exec_depend>
-  <exec_depend>launch_ros</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
