@@ -4,6 +4,3 @@ source;share/chair_controller/hook/pythonpath.sh
 source;share/chair_controller/hook/ament_prefix_path.ps1
 source;share/chair_controller/hook/ament_prefix_path.dsv
 source;share/chair_controller/hook/ament_prefix_path.sh
-source;../../build/chair_controller/share/chair_controller/hook/pythonpath_develop.ps1
-source;../../build/chair_controller/share/chair_controller/hook/pythonpath_develop.dsv
-source;../../build/chair_controller/share/chair_controller/hook/pythonpath_develop.sh

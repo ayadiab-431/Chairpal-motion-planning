@@ -1,0 +1,27 @@
+running develop
+Removing /home/ayadiab/chair_ws/install/medical_wheelchair/lib/python3.10/site-packages/medical-wheelchair.egg-link (link to .)
+running egg_info
+writing ../../build/medical_wheelchair/medical_wheelchair.egg-info/PKG-INFO
+writing dependency_links to ../../build/medical_wheelchair/medical_wheelchair.egg-info/dependency_links.txt
+writing entry points to ../../build/medical_wheelchair/medical_wheelchair.egg-info/entry_points.txt
+writing requirements to ../../build/medical_wheelchair/medical_wheelchair.egg-info/requires.txt
+writing top-level names to ../../build/medical_wheelchair/medical_wheelchair.egg-info/top_level.txt
+reading manifest file '../../build/medical_wheelchair/medical_wheelchair.egg-info/SOURCES.txt'
+writing manifest file '../../build/medical_wheelchair/medical_wheelchair.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/ayadiab/chair_ws/build/medical_wheelchair/build
+creating /home/ayadiab/chair_ws/build/medical_wheelchair/build/lib
+creating /home/ayadiab/chair_ws/build/medical_wheelchair/build/lib/medical_wheelchair
+copying medical_wheelchair/__init__.py -> /home/ayadiab/chair_ws/build/medical_wheelchair/build/lib/medical_wheelchair
+running install
+running install_lib
+creating /home/ayadiab/chair_ws/install/medical_wheelchair/lib/python3.10/site-packages/medical_wheelchair
+copying /home/ayadiab/chair_ws/build/medical_wheelchair/build/lib/medical_wheelchair/__init__.py -> /home/ayadiab/chair_ws/install/medical_wheelchair/lib/python3.10/site-packages/medical_wheelchair
+byte-compiling /home/ayadiab/chair_ws/install/medical_wheelchair/lib/python3.10/site-packages/medical_wheelchair/__init__.py to __init__.cpython-310.pyc
+running install_data
+copying launch/spawn_wheelchair.launch.py -> /home/ayadiab/chair_ws/install/medical_wheelchair/share/medical_wheelchair/launch
+running install_egg_info
+Copying ../../build/medical_wheelchair/medical_wheelchair.egg-info to /home/ayadiab/chair_ws/install/medical_wheelchair/lib/python3.10/site-packages/medical_wheelchair-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/ayadiab/chair_ws/build/medical_wheelchair/install.log'

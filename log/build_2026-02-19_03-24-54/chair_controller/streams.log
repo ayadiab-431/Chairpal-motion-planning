@@ -1,0 +1,23 @@
+[1.650s] Invoking command in '/home/ayadiab/chair_ws/src/chair_controller': PYTHONPATH=/home/ayadiab/chair_ws/build/chair_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/install/chair_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/chair_controller build --build-base /home/ayadiab/chair_ws/build/chair_controller/build install --record /home/ayadiab/chair_ws/build/chair_controller/install.log --single-version-externally-managed
+[2.021s] running egg_info
+[2.022s] writing ../../build/chair_controller/chair_controller.egg-info/PKG-INFO
+[2.023s] writing dependency_links to ../../build/chair_controller/chair_controller.egg-info/dependency_links.txt
+[2.023s] writing entry points to ../../build/chair_controller/chair_controller.egg-info/entry_points.txt
+[2.023s] writing requirements to ../../build/chair_controller/chair_controller.egg-info/requires.txt
+[2.023s] writing top-level names to ../../build/chair_controller/chair_controller.egg-info/top_level.txt
+[2.027s] reading manifest file '../../build/chair_controller/chair_controller.egg-info/SOURCES.txt'
+[2.027s] writing manifest file '../../build/chair_controller/chair_controller.egg-info/SOURCES.txt'
+[2.028s] running build
+[2.029s] running build_py
+[2.029s] running install
+[2.029s] running install_lib
+[2.034s] running install_egg_info
+[2.036s] removing '/home/ayadiab/chair_ws/install/chair_controller/lib/python3.10/site-packages/chair_controller-0.0.1-py3.10.egg-info' (and everything under it)
+[2.036s] Copying ../../build/chair_controller/chair_controller.egg-info to /home/ayadiab/chair_ws/install/chair_controller/lib/python3.10/site-packages/chair_controller-0.0.1-py3.10.egg-info
+[2.039s] running install_scripts
+[2.068s] Installing base_controller script to /home/ayadiab/chair_ws/install/chair_controller/lib/chair_controller
+[2.068s] Installing lidar_fake_publisher script to /home/ayadiab/chair_ws/install/chair_controller/lib/chair_controller
+[2.069s] Installing motor_driver script to /home/ayadiab/chair_ws/install/chair_controller/lib/chair_controller
+[2.069s] Installing obstacle_detector script to /home/ayadiab/chair_ws/install/chair_controller/lib/chair_controller
+[2.069s] writing list of installed files to '/home/ayadiab/chair_ws/build/chair_controller/install.log'
+[2.120s] Invoked command in '/home/ayadiab/chair_ws/src/chair_controller' returned '0': PYTHONPATH=/home/ayadiab/chair_ws/build/chair_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/install/chair_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/chair_controller build --build-base /home/ayadiab/chair_ws/build/chair_controller/build install --record /home/ayadiab/chair_ws/build/chair_controller/install.log --single-version-externally-managed
