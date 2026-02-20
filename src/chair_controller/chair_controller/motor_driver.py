@@ -15,27 +15,40 @@ class MotorDriver(Node):
             self.speed_callback,
             10)
 
-        # Publisher للـ Simulation
-        self.turtle_pub = self.create_publisher(
+        # Publisher للـ Simulation (Gazebo Wheelchair)
+        self.sim_pub = self.create_publisher(
             Twist,
-            '/turtle1/cmd_vel',
+            '/cmd_vel',
             10)
 
         self.get_logger().info("Motor Driver ready 👑")
 
     def speed_callback(self, msg):
-        left_speed = msg.data[0]
-        right_speed = msg.data[1]
+        # التأكد من استلام 6 سرعات
+        if len(msg.data) == 6:
+            front_left_speed = msg.data[0]
+            middle_left_speed = msg.data[1]
+            rear_left_speed = msg.data[2]
+            
+            front_right_speed = msg.data[3]
+            middle_right_speed = msg.data[4]
+            rear_right_speed = msg.data[5]
 
-        # تحويل السرعات لأمر Twist للسلحفاة
-        twist_msg = Twist()
-        twist_msg.linear.x = (left_speed + right_speed) / 2.0
-        twist_msg.angular.z = (right_speed - left_speed) / 2.0
+            # في المحاكاة (الـ diff-drive المدمج في Gazebo) بنحتاج نرجع السرعة المجمعة (متوسط اليمين واليسار)
+            avg_left_speed = (front_left_speed + middle_left_speed + rear_left_speed) / 3.0
+            avg_right_speed = (front_right_speed + middle_right_speed + rear_right_speed) / 3.0
 
-        self.turtle_pub.publish(twist_msg)
-        self.get_logger().info(
-            f"Motor Driver -> Left: {left_speed:.2f}, Right: {right_speed:.2f}"
-        )
+            # تحويل السرعات لأمر Twist لـ Gazebo
+            twist_msg = Twist()
+            twist_msg.linear.x = (avg_left_speed + avg_right_speed) / 2.0
+            twist_msg.angular.z = (avg_right_speed - avg_left_speed) / 2.0
+
+            self.sim_pub.publish(twist_msg)
+            self.get_logger().info(
+                f"Simulating 6 Motors -> Avg L: {avg_left_speed:.2f}, Avg R: {avg_right_speed:.2f}"
+            )
+        else:
+            self.get_logger().warn("Received incorrect number of wheel speeds. Expected 6.")
 
 def main(args=None):
     rclpy.init(args=args)

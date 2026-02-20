@@ -33,11 +33,12 @@ class ObstacleDetector(Node):
             twist.angular.z = 0.5        # لف لتفادي العائق
             self.get_logger().info(f"Obstacle detected at {min_front:.2f} m, stopping!")
         else:
-            twist.linear.x = 1.0         # حركة للأمام بسرعة مناسبة
+            twist.linear.x = 0.5         # حركة للأمام بسرعة مناسبة
             twist.angular.z = 0.0
             self.get_logger().info("Path clear, moving forward")
 
         self.cmd_pub.publish(twist)
+
 
 def main(args=None):
     rclpy.init(args=args)

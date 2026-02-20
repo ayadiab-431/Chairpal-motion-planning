@@ -8,10 +8,10 @@ class BaseController(Node):
     def __init__(self):
         super().__init__('base_controller')
 
-        # Subscriber على /cmd_vel
+        # Subscriber على /teleop_cmd_vel بدلاً من /cmd_vel عشان مانعملش تداخل مع الخرج النهائي
         self.subscription = self.create_subscription(
             Twist,
-            '/cmd_vel',
+            '/teleop_cmd_vel',
             self.cmd_callback,
             10)
 
@@ -21,35 +21,38 @@ class BaseController(Node):
             '/wheel_speeds',
             10)
 
-        # Publisher للـ Simulation (TurtleSim)
-        self.turtle_pub = self.create_publisher(
-            Twist,
-            '/turtle1/cmd_vel',
-            10)
-
         self.get_logger().info("Base Controller ready 👑")
 
     def cmd_callback(self, msg):
         linear = msg.linear.x
         angular = msg.angular.z
 
-        # حساب السرعات لكل عجلة
-        left_speed  = linear - angular
-        right_speed = linear + angular
+        # حساب السرعات الأساسية لليمين واليسار
+        left_base_speed = linear - angular
+        right_base_speed = linear + angular
 
-        # نشر السرعات للحسابات الداخلية
+        # توزيع السرعات على الـ 6 مواتير (3 يمين، 3 شمال)
+        # تقدر تعدل القيم دي لو المواتير الأمامية أو الخلفية محتاجة نسبة سرعة مختلفة
+        front_left_speed = left_base_speed
+        middle_left_speed = left_base_speed
+        rear_left_speed = left_base_speed
+
+        front_right_speed = right_base_speed
+        middle_right_speed = right_base_speed
+        rear_right_speed = right_base_speed
+
+        # نشر الـ 6 سرعات
+        # الترتيب: [أمام يسار, وسط يسار, خلف يسار, أمام يمين, وسط يمين, خلف يمين]
         wheel_msg = Float32MultiArray()
-        wheel_msg.data = [left_speed, right_speed]
+        wheel_msg.data = [
+            front_left_speed, middle_left_speed, rear_left_speed,
+            front_right_speed, middle_right_speed, rear_right_speed
+        ]
         self.wheel_publisher.publish(wheel_msg)
 
-        # نشر أمر الحركة للسلحفاة في Simulation
-        twist_msg = Twist()
-        twist_msg.linear.x = linear
-        twist_msg.angular.z = angular
-        self.turtle_pub.publish(twist_msg)
-
         self.get_logger().info(
-            f"Left: {left_speed:.2f} | Right: {right_speed:.2f}"
+            f"Motors L: [{front_left_speed:.2f}, {middle_left_speed:.2f}, {rear_left_speed:.2f}] | "
+            f"Motors R: [{front_right_speed:.2f}, {middle_right_speed:.2f}, {rear_right_speed:.2f}]"
         )
 
 def main(args=None):

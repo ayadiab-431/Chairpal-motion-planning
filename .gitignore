@@ -1,7 +1,10 @@
-build/
-install/
-log/
 __pycache__/
 *.pyc
 *.egg-info/
-.colcon/
+build/
+install/
+log/
+.vscode/
+*.gv
+*.pdf
+*.log

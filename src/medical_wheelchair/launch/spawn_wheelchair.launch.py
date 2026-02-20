@@ -1,3 +1,5 @@
+import os
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import ExecuteProcess, TimerAction, IncludeLaunchDescription
@@ -6,6 +8,10 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
+    pkg_medical_wheelchair = get_package_share_directory('medical_wheelchair')
+    xacro_file = os.path.join(pkg_medical_wheelchair, 'urdf', 'wheelchair.xacro')
+    world_file = os.path.join(pkg_medical_wheelchair, 'worlds', 'house.sdf')
+
     # Ignition Gazebo spawn node
     spawn_cmd = Node(
         package='ros_gz_sim',
@@ -25,7 +31,7 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[{'robot_description': Command(['xacro ', '/home/ayadiab/chair_ws/src/medical_wheelchair/urdf/wheelchair.xacro'])}]
+            parameters=[{'robot_description': Command(['xacro ', xacro_file])}]
         ),
 
         # Launch Ignition Gazebo
@@ -37,7 +43,7 @@ def generate_launch_description():
                     'gz_sim.launch.py'
                 ])
             ]),
-            launch_arguments={'gz_args': '-r /home/ayadiab/chair_ws/worlds/empty.sdf'}.items()
+            launch_arguments={'gz_args': f'-r {world_file}'}.items()
         ),
 
         # ROS-Gazebo Bridge
@@ -48,7 +54,8 @@ def generate_launch_description():
                 '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
                 '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',
                 '/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V',
-                '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'
+                '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
+                '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan'
             ],
             output='screen'
         ),

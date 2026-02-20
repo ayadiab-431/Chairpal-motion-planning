@@ -1,6 +1,0 @@
-[console_scripts]
-base_controller = chair_controller.base_controller:main
-lidar_fake_publisher = chair_controller.lidar_fake_publisher:main
-motor_driver = chair_controller.motor_driver:main
-obstacle_detector = chair_controller.obstacle_detector:main
-
