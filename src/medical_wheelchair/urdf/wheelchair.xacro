@@ -40,12 +40,8 @@
     </link>
   </xacro:macro>
 
-  <!-- Base Footprint -->
+  <!-- Base Footprint: No inertia for root link -->
   <link name="base_footprint">
-    <inertial>
-      <mass value="0.01"/>
-      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
-    </inertial>
   </link>
 
   <joint name="base_footprint_joint" type="fixed">
@@ -182,8 +178,6 @@
       <parent link="front_arm_${side}"/>
       <child link="bogie_pivot_${side}"/>
       <origin xyz="0.15 0 0" rpy="0 0 0"/>
-      <axis xyz="0 1 0"/>
-      <limit effort="10" velocity="1" lower="-1.57" upper="1.57"/>
     </joint>
 
     <!-- Inverted V Bogie branches -->
@@ -312,7 +306,7 @@
         </scan>
         <range>
           <min>0.08</min>
-          <max>10.0</max>
+          <max>8.0</max>
           <resolution>0.01</resolution>
         </range>
       </lidar>
