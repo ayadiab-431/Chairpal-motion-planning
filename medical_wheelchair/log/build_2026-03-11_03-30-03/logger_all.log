@@ -1,0 +1,92 @@
+[0.992s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'medical_wheelchair', '--symlink-install']
+[0.993s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['medical_wheelchair'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x78e31b230f10>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x78e31b33dd80>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x78e31b33dd80>>, mixin_verb=('build',))
+[1.399s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.399s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.399s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.399s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.399s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.399s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.399s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/ayadiab/chair_ws/src/medical_wheelchair'
+[1.399s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.399s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.400s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.400s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.400s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.400s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.400s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.400s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.400s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.420s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_python' and name 'medical_wheelchair'
+[1.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.455s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.455s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.456s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.458s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'cmake_args' from command line to 'None'
+[1.459s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'cmake_target' from command line to 'None'
+[1.459s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.459s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'cmake_clean_cache' from command line to 'False'
+[1.459s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'cmake_clean_first' from command line to 'False'
+[1.459s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'cmake_force_configure' from command line to 'False'
+[1.459s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'ament_cmake_args' from command line to 'None'
+[1.459s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'catkin_cmake_args' from command line to 'None'
+[1.459s] Level 5:colcon.colcon_core.verb:set package 'medical_wheelchair' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.459s] DEBUG:colcon.colcon_core.verb:Building package 'medical_wheelchair' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair', 'merge_install': False, 'path': '/home/ayadiab/chair_ws/src/medical_wheelchair', 'symlink_install': True, 'test_result_base': None}
+[1.459s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.461s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.462s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/ayadiab/chair_ws/src/medical_wheelchair' with build type 'ament_python'
+[1.462s] Level 1:colcon.colcon_core.shell:create_environment_hook('medical_wheelchair', 'ament_prefix_path')
+[1.464s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.465s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/hook/ament_prefix_path.ps1'
+[1.466s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/hook/ament_prefix_path.dsv'
+[1.467s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/hook/ament_prefix_path.sh'
+[1.468s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.469s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.147s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/ayadiab/chair_ws/src/medical_wheelchair'
+[2.148s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.148s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.775s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair': PYTHONPATH=/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/build --no-deps symlink_data
+[3.300s] Level 1:colcon.colcon_core.shell:create_environment_hook('medical_wheelchair', 'pythonpath_develop')
+[3.301s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/share/medical_wheelchair/hook/pythonpath_develop.ps1'
+[3.301s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair' returned '0': PYTHONPATH=/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/build --no-deps symlink_data
+[3.302s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/share/medical_wheelchair/hook/pythonpath_develop.dsv'
+[3.304s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/share/medical_wheelchair/hook/pythonpath_develop.sh'
+[3.324s] Level 1:colcon.colcon_core.environment:checking '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair' for CMake module files
+[3.326s] Level 1:colcon.colcon_core.environment:checking '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair' for CMake config files
+[3.375s] Level 1:colcon.colcon_core.environment:checking '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/lib'
+[3.376s] Level 1:colcon.colcon_core.environment:checking '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/bin'
+[3.376s] Level 1:colcon.colcon_core.environment:checking '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/lib/pkgconfig/medical_wheelchair.pc'
+[3.377s] Level 1:colcon.colcon_core.environment:checking '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/lib/python3.10/site-packages'
+[3.377s] Level 1:colcon.colcon_core.shell:create_environment_hook('medical_wheelchair', 'pythonpath')
+[3.378s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/hook/pythonpath.ps1'
+[3.380s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/hook/pythonpath.dsv'
+[3.382s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/hook/pythonpath.sh'
+[3.385s] Level 1:colcon.colcon_core.environment:checking '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/bin'
+[3.385s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(medical_wheelchair)
+[3.386s] INFO:colcon.colcon_core.shell:Creating package script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/package.ps1'
+[3.388s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/package.dsv'
+[3.389s] INFO:colcon.colcon_core.shell:Creating package script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/package.sh'
+[3.391s] INFO:colcon.colcon_core.shell:Creating package script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/package.bash'
+[3.393s] INFO:colcon.colcon_core.shell:Creating package script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/medical_wheelchair/package.zsh'
+[3.395s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/colcon-core/packages/medical_wheelchair)
+[3.395s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.395s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.396s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[3.396s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.403s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.403s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.403s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.421s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.422s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/local_setup.ps1'
+[3.424s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/ayadiab/chair_ws/src/medical_wheelchair/install/_local_setup_util_ps1.py'
+[3.428s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/setup.ps1'
+[3.430s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/local_setup.sh'
+[3.432s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/ayadiab/chair_ws/src/medical_wheelchair/install/_local_setup_util_sh.py'
+[3.433s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/setup.sh'
+[3.435s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/local_setup.bash'
+[3.437s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/setup.bash'
+[3.439s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/local_setup.zsh'
+[3.440s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ayadiab/chair_ws/src/medical_wheelchair/install/setup.zsh'

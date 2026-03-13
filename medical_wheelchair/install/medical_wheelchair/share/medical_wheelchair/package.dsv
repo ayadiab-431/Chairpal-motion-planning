@@ -1,0 +1,9 @@
+source;share/medical_wheelchair/hook/pythonpath.ps1
+source;share/medical_wheelchair/hook/pythonpath.dsv
+source;share/medical_wheelchair/hook/pythonpath.sh
+source;share/medical_wheelchair/hook/ament_prefix_path.ps1
+source;share/medical_wheelchair/hook/ament_prefix_path.dsv
+source;share/medical_wheelchair/hook/ament_prefix_path.sh
+source;../../build/medical_wheelchair/share/medical_wheelchair/hook/pythonpath_develop.ps1
+source;../../build/medical_wheelchair/share/medical_wheelchair/hook/pythonpath_develop.dsv
+source;../../build/medical_wheelchair/share/medical_wheelchair/hook/pythonpath_develop.sh

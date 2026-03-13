@@ -1,0 +1,18 @@
+[1.185s] Invoking command in '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair': PYTHONPATH=/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/build --no-deps symlink_data
+[1.690s] running develop
+[2.023s] running egg_info
+[2.023s] writing medical_wheelchair.egg-info/PKG-INFO
+[2.023s] writing dependency_links to medical_wheelchair.egg-info/dependency_links.txt
+[2.023s] writing entry points to medical_wheelchair.egg-info/entry_points.txt
+[2.024s] writing requirements to medical_wheelchair.egg-info/requires.txt
+[2.028s] writing top-level names to medical_wheelchair.egg-info/top_level.txt
+[2.028s] reading manifest file 'medical_wheelchair.egg-info/SOURCES.txt'
+[2.033s] writing manifest file 'medical_wheelchair.egg-info/SOURCES.txt'
+[2.040s] running build_ext
+[2.041s] Creating /home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/lib/python3.10/site-packages/medical-wheelchair.egg-link (link to .)
+[2.042s] 
+[2.042s] Installed /home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair
+[2.042s] running symlink_data
+[2.044s] symbolically linking /home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/resource/medical_wheelchair -> /home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/ament_index/resource_index/packages
+[2.044s] error: [Errno 17] File exists: '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/resource/medical_wheelchair' -> '/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/share/ament_index/resource_index/packages/medical_wheelchair'
+[2.206s] Invoked command in '/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair' returned '1': PYTHONPATH=/home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/medical_wheelchair/install/medical_wheelchair/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ayadiab/chair_ws/src/medical_wheelchair/build/medical_wheelchair/build --no-deps symlink_data

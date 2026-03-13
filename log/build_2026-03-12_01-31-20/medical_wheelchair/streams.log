@@ -1,0 +1,30 @@
+[1.151s] Invoking command in '/home/ayadiab/chair_ws/src/build/medical_wheelchair': PYTHONPATH=/home/ayadiab/chair_ws/src/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ayadiab/chair_ws/src/build/medical_wheelchair/build --no-deps symlink_data
+[1.465s] running develop
+[1.613s] running egg_info
+[1.613s] creating medical_wheelchair.egg-info
+[1.614s] writing medical_wheelchair.egg-info/PKG-INFO
+[1.614s] writing dependency_links to medical_wheelchair.egg-info/dependency_links.txt
+[1.614s] writing entry points to medical_wheelchair.egg-info/entry_points.txt
+[1.614s] writing requirements to medical_wheelchair.egg-info/requires.txt
+[1.630s] writing top-level names to medical_wheelchair.egg-info/top_level.txt
+[1.631s] writing manifest file 'medical_wheelchair.egg-info/SOURCES.txt'
+[1.634s] reading manifest file 'medical_wheelchair.egg-info/SOURCES.txt'
+[1.635s] writing manifest file 'medical_wheelchair.egg-info/SOURCES.txt'
+[1.639s] running build_ext
+[1.640s] Creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/python3.10/site-packages/medical-wheelchair.egg-link (link to .)
+[1.641s] 
+[1.641s] Installed /home/ayadiab/chair_ws/src/build/medical_wheelchair
+[1.641s] running symlink_data
+[1.641s] creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/ament_index
+[1.641s] creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/ament_index/resource_index
+[1.641s] creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/ament_index/resource_index/packages
+[1.642s] symbolically linking /home/ayadiab/chair_ws/src/build/medical_wheelchair/resource/medical_wheelchair -> /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/ament_index/resource_index/packages
+[1.642s] symbolically linking /home/ayadiab/chair_ws/src/build/medical_wheelchair/package.xml -> /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/medical_wheelchair
+[1.642s] creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/medical_wheelchair/launch
+[1.642s] symbolically linking /home/ayadiab/chair_ws/src/build/medical_wheelchair/launch/spawn_wheelchair.launch.py -> /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/medical_wheelchair/launch
+[1.642s] symbolically linking /home/ayadiab/chair_ws/src/build/medical_wheelchair/launch/mapper.launch.py -> /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/medical_wheelchair/launch
+[1.642s] creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/medical_wheelchair/rviz
+[1.642s] symbolically linking /home/ayadiab/chair_ws/src/build/medical_wheelchair/rviz/medical_wheelchair.rviz -> /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/medical_wheelchair/rviz
+[1.643s] creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/medical_wheelchair/urdf
+[1.643s] symbolically linking /home/ayadiab/chair_ws/src/build/medical_wheelchair/urdf/wheelchair.xacro -> /home/ayadiab/chair_ws/src/install/medical_wheelchair/share/medical_wheelchair/urdf
+[1.684s] Invoked command in '/home/ayadiab/chair_ws/src/build/medical_wheelchair' returned '0': PYTHONPATH=/home/ayadiab/chair_ws/src/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ayadiab/chair_ws/src/build/medical_wheelchair/build --no-deps symlink_data

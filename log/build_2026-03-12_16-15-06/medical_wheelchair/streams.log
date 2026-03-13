@@ -1,0 +1,17 @@
+[3.515s] Invoking command in '/home/ayadiab/chair_ws/src/build/medical_wheelchair': PYTHONPATH=/home/ayadiab/chair_ws/src/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ayadiab/chair_ws/src/build/medical_wheelchair/build --no-deps symlink_data
+[3.913s] running develop
+[4.088s] running egg_info
+[4.088s] writing medical_wheelchair.egg-info/PKG-INFO
+[4.091s] writing dependency_links to medical_wheelchair.egg-info/dependency_links.txt
+[4.091s] writing entry points to medical_wheelchair.egg-info/entry_points.txt
+[4.091s] writing requirements to medical_wheelchair.egg-info/requires.txt
+[4.091s] writing top-level names to medical_wheelchair.egg-info/top_level.txt
+[4.091s] reading manifest file 'medical_wheelchair.egg-info/SOURCES.txt'
+[4.093s] writing manifest file 'medical_wheelchair.egg-info/SOURCES.txt'
+[4.095s] running build_ext
+[4.097s] Creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/python3.10/site-packages/medical-wheelchair.egg-link (link to .)
+[4.097s] Installing tf_republisher script to /home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/medical_wheelchair
+[4.097s] 
+[4.098s] Installed /home/ayadiab/chair_ws/src/build/medical_wheelchair
+[4.098s] running symlink_data
+[4.215s] Invoked command in '/home/ayadiab/chair_ws/src/build/medical_wheelchair' returned '0': PYTHONPATH=/home/ayadiab/chair_ws/src/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ayadiab/chair_ws/src/build/medical_wheelchair/build --no-deps symlink_data

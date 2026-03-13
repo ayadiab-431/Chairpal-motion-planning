@@ -1,0 +1,3 @@
+[console_scripts]
+tf_republisher = medical_wheelchair.tf_republisher:main
+

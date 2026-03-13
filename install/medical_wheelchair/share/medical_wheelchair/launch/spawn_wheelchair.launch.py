@@ -1,0 +1,1 @@
+/home/ayadiab/chair_ws/src/build/medical_wheelchair/launch/spawn_wheelchair.launch.py

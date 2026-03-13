@@ -1,0 +1,42 @@
+[0.000000] (-) TimerEvent: {}
+[0.000305] (-) JobUnselected: {'identifier': 'chair_controller'}
+[0.000366] (medical_wheelchair) JobQueued: {'identifier': 'medical_wheelchair', 'dependencies': OrderedDict()}
+[0.000406] (medical_wheelchair) JobStarted: {'identifier': 'medical_wheelchair'}
+[0.097283] (-) TimerEvent: {}
+[0.197723] (-) TimerEvent: {}
+[0.297959] (-) TimerEvent: {}
+[0.398909] (-) TimerEvent: {}
+[0.500571] (-) TimerEvent: {}
+[0.600809] (-) TimerEvent: {}
+[0.701040] (-) TimerEvent: {}
+[0.801351] (-) TimerEvent: {}
+[0.901588] (-) TimerEvent: {}
+[1.003690] (-) TimerEvent: {}
+[1.103936] (-) TimerEvent: {}
+[1.204383] (-) TimerEvent: {}
+[1.254699] (medical_wheelchair) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/ayadiab/chair_ws/src/build/medical_wheelchair/build', '--no-deps', 'symlink_data'], 'cwd': '/home/ayadiab/chair_ws/src/build/medical_wheelchair', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'VSCODE_CWD': '/home/ayadiab', 'VSCODE_ESM_ENTRYPOINT': 'vs/workbench/api/node/extensionHostProcess', 'USER': 'ayadiab', 'LC_TIME': 'ar_EG.UTF-8', 'VSCODE_NLS_CONFIG': '{"userLocale":"en-us","osLocale":"en-us","resolvedLanguage":"en","defaultMessagesFile":"/usr/share/antigravity/resources/app/out/nls.messages.json","locale":"en-us","availableLanguages":{}}', 'VSCODE_HANDLES_UNCAUGHT_ERRORS': 'true', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '0', 'HOME': '/home/ayadiab', 'CHROME_DESKTOP': 'antigravity.desktop', 'DESKTOP_SESSION': 'ubuntu', 'NO_PROXY': '*.azureedge.net', 'VSCODE_IPC_HOOK': '/run/user/1000/vscode-935cf70e-1.10-main.sock', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/antigravity.desktop', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'ar_EG.UTF-8', 'MANAGERPID': '1409', 'SYSTEMD_EXEC_PID': '1584', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '7646', 'VSCODE_CRASH_REPORTER_PROCESS_TYPE': 'extensionHost', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'LOGNAME': 'ayadiab', '_': '/usr/bin/colcon', 'JOURNAL_STREAM': '8:12092', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'ayadiab', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'FC_FONTATIONS': '1', 'ANTIGRAVITY_EDITOR_APP_ROOT': '/usr/share/antigravity/resources/app', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/aya-diab:@/tmp/.ICE-unix/1560,unix/aya-diab:/tmp/.ICE-unix/1560', 'INVOCATION_ID': '9f496da45f564b7ba9c6ccb559a4ad12', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'ar_EG.UTF-8', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'wayland', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'ar_EG.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.7XV9L3', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'SHELL': '/bin/bash', 'LC_NAME': 'ar_EG.UTF-8', 'QT_ACCESSIBILITY': '1', 'ELECTRON_RUN_AS_NODE': '1', 'GDMSESSION': 'ubuntu', 'LC_MEASUREMENT': 'ar_EG.UTF-8', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'ar_EG.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/ayadiab/chair_ws/src/build/medical_wheelchair', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'VSCODE_CODE_CACHE_PATH': '/home/ayadiab/.config/Antigravity/CachedData/d2597a5c475647ed306b22de1e39853c7812d07d', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'LC_NUMERIC': 'ar_EG.UTF-8', 'LC_PAPER': 'ar_EG.UTF-8', 'COLCON': '1', 'VSCODE_PID': '7646', 'PYTHONPATH': '/home/ayadiab/chair_ws/src/build/medical_wheelchair/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/python3.10/site-packages:'}, 'shell': False}
+[1.304513] (-) TimerEvent: {}
+[1.404753] (-) TimerEvent: {}
+[1.505113] (-) TimerEvent: {}
+[1.606048] (-) TimerEvent: {}
+[1.675735] (medical_wheelchair) StdoutLine: {'line': b'running develop\n'}
+[1.706164] (-) TimerEvent: {}
+[1.806586] (-) TimerEvent: {}
+[1.906915] (-) TimerEvent: {}
+[1.943731] (medical_wheelchair) StdoutLine: {'line': b'running egg_info\n'}
+[1.943970] (medical_wheelchair) StdoutLine: {'line': b'writing medical_wheelchair.egg-info/PKG-INFO\n'}
+[1.945605] (medical_wheelchair) StdoutLine: {'line': b'writing dependency_links to medical_wheelchair.egg-info/dependency_links.txt\n'}
+[1.945851] (medical_wheelchair) StdoutLine: {'line': b'writing entry points to medical_wheelchair.egg-info/entry_points.txt\n'}
+[1.945995] (medical_wheelchair) StdoutLine: {'line': b'writing requirements to medical_wheelchair.egg-info/requires.txt\n'}
+[1.946133] (medical_wheelchair) StdoutLine: {'line': b'writing top-level names to medical_wheelchair.egg-info/top_level.txt\n'}
+[1.951344] (medical_wheelchair) StdoutLine: {'line': b"reading manifest file 'medical_wheelchair.egg-info/SOURCES.txt'\n"}
+[1.955560] (medical_wheelchair) StdoutLine: {'line': b"writing manifest file 'medical_wheelchair.egg-info/SOURCES.txt'\n"}
+[1.957670] (medical_wheelchair) StdoutLine: {'line': b'running build_ext\n'}
+[1.957909] (medical_wheelchair) StdoutLine: {'line': b'Creating /home/ayadiab/chair_ws/src/install/medical_wheelchair/lib/python3.10/site-packages/medical-wheelchair.egg-link (link to .)\n'}
+[1.960886] (medical_wheelchair) StdoutLine: {'line': b'\n'}
+[1.961141] (medical_wheelchair) StdoutLine: {'line': b'Installed /home/ayadiab/chair_ws/src/build/medical_wheelchair\n'}
+[1.961581] (medical_wheelchair) StdoutLine: {'line': b'running symlink_data\n'}
+[2.007583] (-) TimerEvent: {}
+[2.042611] (medical_wheelchair) CommandEnded: {'returncode': 0}
+[2.066672] (medical_wheelchair) JobEnded: {'identifier': 'medical_wheelchair', 'rc': 0}
+[2.068183] (-) EventReactorShutdown: {}
