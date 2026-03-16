@@ -1,0 +1,44 @@
+# Autonomous Stair-Climbing Wheelchair: Project Roadmap
+
+This document outlines the strategic plan for developing the autonomous wheelchair graduation project.
+
+## Project Vision
+To create a 6WD wheelchair with a rocker-bogie mechanism capable of autonomous indoor navigation, obstacle avoidance, and stair climbing, enabling users with disabilities to navigate complex environments safely and independently.
+
+---
+
+## Phase 1: Foundation (Completed/In Progress)
+Build the digital twin and basic control systems.
+- [x] **URDF Modeling**: 6WD Rocker-Bogie chassis with seat and armrests.
+- [x] **Sensor Integration**: 360° 2D LiDAR.
+- [x] **Basic Control**: Differential drive bridge between ROS2 and Gazebo.
+- [/] **Visualization**: RViZ setup for monitoring sensors and model state.
+
+## Phase 2: Perception & SLAM (Immediate Next)
+Enable the robot to "see" and "remember" its environment.
+- [ ] **TF & Odom Fixes**: Ensure structural integrity of the model in RViZ during movement.
+- [ ] **SLAM Implementation**: Integrate `slam_toolbox` or `cartographer` to generate 2D maps using LiDAR.
+- [ ] **Static Mapping**: Save and load maps of rooms and corridors.
+
+## Phase 3: Autonomous Navigation (Core Logic)
+The "brain" of the wheelchair that plans paths.
+- [ ] **Navigation Stack (Nav2)**: Configure the ROS2 Navigation Stack.
+- [ ] **A* Path Planning**: Use global planners for the "best path" and local planners for real-time avoidance.
+- [ ] **Obstacle Avoidance**: Dynamic avoidance of moving obstacles (people, furniture) using LiDAR.
+
+## Phase 4: Terrain & Stair Climbing (Advanced Physics)
+Testing the unique mechanical design.
+- [ ] **Stair Physics Tuning**: Refine Gazebo friction and torque to simulate stair climbing.
+- [ ] **Ramp Navigation**: Specialized control for maintaining balance on inclines.
+- [ ] **Autonomous Stair Mode**: Transition logic between flat ground and stair climbing.
+
+## Phase 5: Autonomy & UI (Final Polish)
+User interaction and full system integration.
+- [ ] **Target Selection**: Interface to pick a room/destination.
+- [ ] **Autonomous Missions**: Seamless travel from point A to point B.
+- [ ] **Safety Layer**: Emergency stops and recovery behaviors.
+
+---
+
+> [!TIP]
+> **Why A*?** A* is excellent for grid-based pathfinding (Global Planning). However, for real-time movement, we will use it alongside a **Local Planner** (like DWB or TEB) that handles the actual motor speeds to avoid sudden gaps or moving people.
