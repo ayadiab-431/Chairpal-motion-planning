@@ -40,8 +40,12 @@
     </link>
   </xacro:macro>
 
-  <!-- Base Footprint: No inertia for root link -->
+  <!-- Base Footprint -->
   <link name="base_footprint">
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+    </inertial>
   </link>
 
   <joint name="base_footprint_joint" type="fixed">
@@ -104,7 +108,7 @@
 
   <!-- Main Chassis Hub -->
   <link name="chassis_hub">
-    <xacro:box_inertia m="2.0" w="0.2" h="0.3" d="0.05"/>
+    <xacro:box_inertia m="10.0" w="0.2" h="0.3" d="0.05"/>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry><box size="0.2 0.3 0.05"/></geometry>
@@ -121,6 +125,68 @@
     <origin xyz="0 0 -0.05" rpy="0 0 0"/>
   </joint>
 
+  <!-- LiDAR Sensor & Mount -->
+  <link name="lidar_mount">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.05 0.05 0.1"/></geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <joint name="lidar_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_mount"/>
+    <origin xyz="0.25 0 -0.05" rpy="0 0 0"/> <!-- At the front edge of the seat base, angled down -->
+  </joint>
+
+  <link name="lidar_link">
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.04" length="0.05"/></geometry>
+      <material name="fabric_red"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.04" length="0.05"/></geometry>
+    </collision>
+  </link>
+
+  <joint name="lidar_joint" type="fixed">
+    <parent link="lidar_mount"/>
+    <child link="lidar_link"/>
+    <origin xyz="0.03 0 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <gazebo reference="lidar_link">
+    <sensor name="gpu_lidar" type="gpu_lidar">
+      <pose>0 0 0 0 0 0</pose>
+      <topic>/scan</topic>
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.12</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+
   <!-- Navigation Macros for Sides -->
   <xacro:macro name="chassis_side" params="side reflect">
     <!-- Rear Sloped Arm -->
@@ -128,7 +194,6 @@
     <joint name="rear_arm_${side}_joint" type="fixed">
       <parent link="chassis_hub"/>
       <child link="rear_arm_${side}"/>
-      <!--change-->
       <origin xyz="-0.1 ${reflect * 0.15} 0" rpy="0 1.2 3.14159"/>
     </joint>
 
@@ -145,8 +210,8 @@
         <geometry><cylinder radius="0.07" length="0.05"/></geometry>
       </collision>
       <gazebo reference="rear_${side}_wheel">
-        <mu1>1.0</mu1>
-        <mu2>1.0</mu2>
+        <mu1>5.0</mu1>
+        <mu2>5.0</mu2>
         <self_collide>false</self_collide>
       </gazebo>
     </link>
@@ -154,11 +219,13 @@
       <parent link="rear_arm_${side}"/>
       <child link="rear_${side}_wheel"/>
       <origin xyz="0.25 0 0" rpy="0 -1.2 0"/>
-      <axis xyz="0 1 0"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="10" velocity="5"/>
+      <dynamics damping="2.0" friction="0.5"/>
     </joint>
 
     <!-- Front Sloped Arm -->
-    <xacro:tubular_link name="front_arm_${side}" length="0.15" radius="0.02" m="0.3" material="silver"/>
+    <xacro:tubular_link name="front_arm_${side}" length="0.15" radius="0.02" m="0.5" material="silver"/>
     <joint name="front_arm_${side}_joint" type="fixed">
       <parent link="chassis_hub"/>
       <child link="front_arm_${side}"/>
@@ -174,33 +241,30 @@
         <material name="grey"/>
       </visual>
     </link>
-    <joint name="bogie_pivot_${side}_joint" type="fixed">
+    <joint name="bogie_pivot_${side}_joint" type="revolute">
       <parent link="front_arm_${side}"/>
       <child link="bogie_pivot_${side}"/>
       <origin xyz="0.15 0 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="10" velocity="1" lower="-0.5" upper="0.5"/>
+      <dynamics damping="1.0" friction="0.1"/>
     </joint>
 
     <!-- Inverted V Bogie branches -->
     <!-- Middle branch -->
-    <xacro:tubular_link name="bogie_middle_arm_${side}" length="0.15" radius="0.015" m="0.2" material="silver"/>
+    <xacro:tubular_link name="bogie_middle_arm_${side}" length="0.15" radius="0.015" m="0.3" material="silver"/>
     <joint name="bogie_middle_arm_joint_${side}" type="fixed">
       <parent link="bogie_pivot_${side}"/>
       <child link="bogie_middle_arm_${side}"/>
-      <!--change-->
       <origin xyz="0 0 0" rpy="0 1.38 0"/> 
-      <axis xyz="0 1 0"/>
-      <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
     </joint>
 
     <!-- Front branch -->
-    <xacro:tubular_link name="bogie_front_arm_${side}" length="0.15" radius="0.015" m="0.2" material="silver"/>
+    <xacro:tubular_link name="bogie_front_arm_${side}" length="0.15" radius="0.015" m="0.3" material="silver"/>
     <joint name="bogie_front_arm_joint_${side}" type="fixed">
       <parent link="bogie_pivot_${side}"/>
       <child link="bogie_front_arm_${side}"/>
-      <!--change-->
       <origin xyz="0 0 0" rpy="0 0.16 0"/> 
-      <axis xyz="0 1 0"/>
-      <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
     </joint>
 
     <!-- Front Wheel -->
@@ -213,20 +277,21 @@
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="1.5708 0 0"/>
-        <geometry><sphere radius="0.07"/></geometry>
+        <geometry><cylinder radius="0.07" length="0.05"/></geometry>
       </collision>
       <gazebo reference="front_${side}_wheel">
-        <mu1>0.001</mu1>
-        <mu2>0.001</mu2>
+        <mu1>5.0</mu1>
+        <mu2>5.0</mu2>
         <self_collide>false</self_collide>
       </gazebo>
     </link>
     <joint name="front_${side}_wheel_joint" type="continuous">
       <parent link="bogie_front_arm_${side}"/>
       <child link="front_${side}_wheel"/>
-      <!--change-->
       <origin xyz="0.15 0 0" rpy="0 -0.16 0"/>
       <axis xyz="0 1 0"/>
+      <limit effort="10" velocity="5"/>
+      <dynamics damping="2.0" friction="0.5"/>
     </joint>
 
     <!-- Middle Wheel -->
@@ -239,20 +304,21 @@
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="1.5708 0 0"/>
-        <geometry><sphere radius="0.07"/></geometry>
+        <geometry><cylinder radius="0.07" length="0.05"/></geometry>
       </collision>
       <gazebo reference="middle_${side}_wheel">
-        <mu1>0.001</mu1>
-        <mu2>0.001</mu2>
+        <mu1>5.0</mu1>
+        <mu2>5.0</mu2>
         <self_collide>false</self_collide>
       </gazebo>
     </link>
     <joint name="middle_${side}_wheel_joint" type="continuous">
       <parent link="bogie_middle_arm_${side}"/>
       <child link="middle_${side}_wheel"/>
-      <!--change-->
       <origin xyz="0.15 0 0" rpy="0 -1.38 0"/>
       <axis xyz="0 1 0"/>
+      <limit effort="10" velocity="5"/>
+      <dynamics damping="2.0" friction="0.5"/>
     </joint>
   </xacro:macro>
 
@@ -266,58 +332,36 @@
       name="gz::sim::systems::DiffDrive">
       <left_joint>rear_left_wheel_joint</left_joint>
       <right_joint>rear_right_wheel_joint</right_joint>
-      <wheel_separation>0.35</wheel_separation>
+      <wheel_separation>0.5</wheel_separation>
       <wheel_radius>0.07</wheel_radius>
-      <odom_publish_frequency>50</odom_publish_frequency>
-      <max_linear_acceleration>2</max_linear_acceleration>
-      <min_linear_acceleration>-2</min_linear_acceleration>
-      <max_angular_acceleration>4</max_angular_acceleration>
-      <min_angular_acceleration>-4</min_angular_acceleration>
-      <max_linear_velocity>2</max_linear_velocity>
-      <min_linear_velocity>-2</min_linear_velocity>
-      <max_angular_velocity>4</max_angular_velocity>
-      <min_angular_velocity>-4</min_angular_velocity>
-      <topic>/cmd_vel</topic>
+      <topic>model/wheelchair/cmd_vel</topic>
+      <odom_topic>model/wheelchair/odom</odom_topic>
+      <tf_topic>model/wheelchair/tf</tf_topic>
+      <!-- Speed limits to prevent runaway motion -->
+      <max_linear_velocity>0.15</max_linear_velocity>
+      <max_angular_velocity>0.4</max_angular_velocity>
+      <max_linear_acceleration>0.5</max_linear_acceleration>
+      <max_angular_acceleration>1.0</max_angular_acceleration>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
     </plugin>
-  </gazebo>
 
-  <!-- Lidar Sensor -->
-  <link name="laser_frame">
-    <xacro:cylinder_inertia m="0.2" r="0.05" h="0.05"/>
-    <visual>
-      <geometry><cylinder radius="0.05" length="0.05"/></geometry>
-      <material name="black"/>
-    </visual>
-  </link>
-
-  <joint name="laser_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="laser_frame"/>
-    <origin xyz="0.2 0 0.1" rpy="0 0 0"/>
-  </joint>
-
-  <gazebo reference="laser_frame">
-    <sensor name="gpu_lidar" type="gpu_lidar">
-      <topic>scan</topic>
-      <update_rate>10</update_rate>
-      <lidar>
-        <scan>
-          <horizontal>
-            <samples>360</samples>
-            <resolution>1</resolution>
-            <min_angle>-3.14159</min_angle>
-            <max_angle>3.14159</max_angle>
-          </horizontal>
-        </scan>
-        <range>
-          <min>0.08</min>
-          <max>8.0</max>
-          <resolution>0.01</resolution>
-        </range>
-      </lidar>
-      <always_on>1</always_on>
-      <visualize>true</visualize>
-    </sensor>
+    <plugin
+      filename="gz-sim-joint-state-publisher-system"
+      name="gz::sim::systems::JointStatePublisher">
+      <topic>/joint_states</topic>
+      <joint_name>rear_left_wheel_joint</joint_name>
+      <joint_name>rear_right_wheel_joint</joint_name>
+      <joint_name>middle_left_wheel_joint</joint_name>
+      <joint_name>middle_right_wheel_joint</joint_name>
+      <joint_name>front_left_wheel_joint</joint_name>
+      <joint_name>front_right_wheel_joint</joint_name>
+      <joint_name>bogie_pivot_left_joint</joint_name>
+      <joint_name>bogie_pivot_right_joint</joint_name>
+    </plugin>
   </gazebo>
 
 </robot>
