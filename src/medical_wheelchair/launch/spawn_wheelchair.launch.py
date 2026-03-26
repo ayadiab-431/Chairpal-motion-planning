@@ -1,18 +1,12 @@
-import os
-from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import ExecuteProcess, TimerAction, IncludeLaunchDescription
-from launch.substitutions import Command, PathJoinSubstitution
-from launch_ros.parameter_descriptions import ParameterValue
+from launch.substitutions import Command, PathJoinSubstitution, FindExecutable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.substitutions import FindPackageShare
+from launch.substitutions import PythonExpression
 
 def generate_launch_description():
-    pkg_medical_wheelchair = get_package_share_directory('medical_wheelchair')
-    xacro_file = os.path.join(pkg_medical_wheelchair, 'urdf', 'wheelchair.xacro')
-    world_file = os.path.join(pkg_medical_wheelchair, 'worlds', 'house.sdf')
-
     # Ignition Gazebo spawn node
     spawn_cmd = Node(
         package='ros_gz_sim',
@@ -32,7 +26,17 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[{'robot_description': ParameterValue(Command(['xacro ', xacro_file]), value_type=str)}]
+            parameters=[
+                {'use_sim_time': True},
+                {'robot_description': Command([
+                    FindExecutable(name='xacro'), ' ',
+                    PathJoinSubstitution([
+                        FindPackageShare('medical_wheelchair'),
+                        'urdf',
+                        'wheelchair.xacro'
+                    ])
+                ])}
+            ]
         ),
 
         # Launch Ignition Gazebo
@@ -44,7 +48,17 @@ def generate_launch_description():
                     'gz_sim.launch.py'
                 ])
             ]),
-            launch_arguments={'gz_args': f'-r {world_file}'}.items()
+            launch_arguments={
+                'gz_args': PythonExpression([
+                    "'-r ' + '",
+                    PathJoinSubstitution([
+                        FindPackageShare('medical_wheelchair'),
+                        'worlds',
+                        'empty_with_sensors.sdf'
+                    ]),
+                    "'"
+                ])
+            }.items()
         ),
 
         # ROS-Gazebo Bridge
@@ -52,18 +66,71 @@ def generate_launch_description():
             package='ros_gz_bridge',
             executable='parameter_bridge',
             arguments=[
-                '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-                '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',
-                '/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V',
+                '/model/wheelchair/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
+                '/model/wheelchair/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
                 '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
-                '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan'
+                '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
+                '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model'
+            ],
+            remappings=[
+                ('/model/wheelchair/cmd_vel', '/cmd_vel'),
+                ('/model/wheelchair/odom', '/odom'),
             ],
             output='screen'
         ),
 
-        # Spawn بعد 2 ثانية
+        # Normalize LaserScan frame for downstream nodes (Nav2/SLAM)
+        Node(
+            package='medical_wheelchair',
+            executable='scan_republisher',
+            name='scan_republisher',
+            output='screen',
+            parameters=[{
+                'use_sim_time': True,
+                'input_topic': '/scan',
+                'output_topic': '/scan_fixed',
+                'frame_id': 'lidar_link',
+                'strip_prefix': 'wheelchair/',
+            }],
+        ),
+
+        # Publish odom -> base_footprint TF from /odom to keep TF tree consistent
+        Node(
+            package='medical_wheelchair',
+            executable='odom_to_tf',
+            name='odom_to_tf',
+            output='screen',
+            parameters=[
+                {'use_sim_time': True},
+                {'odom_topic': '/odom'},
+                {'odom_frame': 'odom'},
+                {'base_frame': 'base_footprint'},
+                {'strip_prefix': 'wheelchair/'},
+            ]
+        ),
+
+        # Spawn بعد 5 ثانية
         TimerAction(
-            period=2.0,
+            period=5.0,
             actions=[spawn_cmd]
+        ),
+
+        # Launch Rviz بعد 3 ثواني
+        TimerAction(
+            period=3.0,
+            actions=[
+                ExecuteProcess(
+                    cmd=[
+                        'rviz2', '-d',
+                        PathJoinSubstitution([
+                            FindPackageShare('medical_wheelchair'),
+                            'rviz',
+                            'medical_wheelchair.rviz'
+                        ]),
+                        '--ros-args', '-p', 'use_sim_time:=true'
+                    ],
+                    output='screen'
+                )
+            ]
         )
     ])

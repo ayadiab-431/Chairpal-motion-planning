@@ -1,12 +1,15 @@
 import os
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.substitutions import Command, FindExecutable
+from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
-    # Use absolute paths for development to avoid rebuild issues
-    xacro_file = '/home/ayadiab/chair_ws/src/medical_wheelchair/urdf/wheelchair.xacro'
+    xacro_file = PathJoinSubstitution([
+        FindPackageShare('medical_wheelchair'),
+        'urdf',
+        'wheelchair.xacro'
+    ])
 
     return LaunchDescription([
         # Robot State Publisher
