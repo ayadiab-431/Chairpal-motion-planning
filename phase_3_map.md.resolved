@@ -1,0 +1,50 @@
+# Phase 3: Autonomous Navigation (Resolved) 🛡️🚀
+
+This document outlines the exact steps to launch the medical wheelchair autonomous navigation system successfully.
+
+## 1. Clean Environment 🧹
+Before starting, ensure no old nodes are running in the background:
+```bash
+killall -9 rviz2 gazebo gz sim robot_state_publisher
+```
+
+## 2. Build the Workspace 🛠️
+Ensure all recent changes to URDF and parameters are applied:
+```bash
+cd ~/chair_ws
+colcon build --packages-select medical_wheelchair --symlink-install
+source install/setup.bash
+```
+
+## 3. Terminal 1: Launch Simulation 🎮
+This starts Gazebo, Robot State Publisher, and the ROS-Gazebo bridge.
+```bash
+ros2 launch medical_wheelchair spawn_wheelchair.launch.py
+```
+**Wait 5-10 seconds.**
+- **Gazebo**: The wheelchair and a red obstacle box should appear.
+- **RViz**: The wheelchair model and a green LiDAR scan (`/scan_fixed`) should be visible.
+- **Clock**: Simulation time should start progressing.
+
+## 4. Terminal 2: Launch Navigation 🗺️
+This starts Nav2 (AMCL, Map Server, Planner, Controller, etc.)
+```bash
+ros2 launch medical_wheelchair nav2_amcl.launch.py
+```
+- **Map**: The static map (`map.yaml`) will now appear as gray floor pixels in RViz.
+- **Status**: The Nav2 nodes will transition to "Active" state.
+- **RViz Logs**: "Waiting for map topic" messages should disappear.
+
+## 5. RViz Interaction 🎯
+### A. Set Initial Pose
+1. Click the **"2D Pose Estimate"** button in the top toolbar.
+2. On the map, click on the robot's current location and drag the mouse in the direction the robot is facing.
+3. The robot model will snap to the map, and the `Global Status` should turn green (Ok).
+
+### B. Set Navigation Goal
+1. Click the **"2D Goal Pose"** button.
+2. Click any point on the map where you want the robot to go.
+3. The robot will plan a path (green line) and begin moving autonomously to the destination.
+
+---
+**Status**: Phase 3 Autonomous Navigation — COMPLETED ✅
